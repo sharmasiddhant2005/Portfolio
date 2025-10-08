@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhant Sharma | AI & Web Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-bg: #f8fafc;
+            --dark-bg: #0f172a;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+            top: -250px;
+            right: -250px;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+            bottom: -150px;
+            left: -150px;
+        }
+        
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-text {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .skill-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-category {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .skill-card li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .skill-logo {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .experience-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            background-color: var(--primary-color);
+            left: 0;
+            top: 0;
+            border-radius: 10px 0 0 10px;
+        }
+        
+        .experience-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .experience-date {
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .badge {
+            font-weight: 500;
+            padding: 7px 12px;
+            border-radius: 20px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card .card-body {
+            padding: 25px;
+        }
+        
+        .text-muted {
+            font-size: 0.9rem;
+        }
+        
+        .company-logo {
+            height: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .profile-img {
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .certification-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .certification-content {
+            padding: 20px;
+        }
+        
+        .certification-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .certification-org {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .certification-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text {
+                font-size: 1.2rem;
+            }
+            
+            .hero::before, .hero::after {
+                display: none;
+            }
+            
+            .btn-primary, .btn-outline-primary {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .certification-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation for section entrance */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Siddhant Sharma</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certifications">Certifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Hi, I am <br><span class="text-primary">Siddhant Sharma</span></h1>
+                    <p class="hero-text">I am a B.Tech Computer Science student with specialization in Artificial Intelligence!</p>
+                    <p>I'm a passionate developer with experience in both front-end and back-end technologies, with a special interest in AI and machine learning applications.</p>
+                    <div class="d-flex flex-wrap">
+                        <a href="#contact" class="btn btn-primary me-3 mb-3">Get In Touch</a>
+                        <a href="#" class="btn btn-outline-primary mb-3">Download Resume</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="siddhant image.jpg" alt="Siddhant Sharma" class="img-fluid rounded-circle profile-img" width="400" height="300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">Skills</h2>
+            <p class="mb-5">A collection of my technical skills and expertise honed through various projects and experiences</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="skill-card">
+                        <h3 class="skill-category"><i class="fas fa-code"></i> Frontend</h3>
+                        <ul>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="HTML"> HTML</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="CSS"> CSS</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="JavaScript"> JavaScript</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="skill-logo" alt="Bootstrap"> Bootstrap</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="skill-card">
+                        <h3 class="skill-category"><i class="fas fa-server"></i> Backend</h3>
+                        <ul>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="Python"> Python</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-logo" alt="MySQL"> MySQL</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="skill-logo" alt="MongoDB"> MongoDB</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" class="skill-logo" alt="Flask"> Flask</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="skill-card">
+                        <h3 class="skill-category"><i class="fas fa-language"></i> Languages</h3>
+                        <ul>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="Python"> Python</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" class="skill-logo" alt="C"> C</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="skill-logo" alt="C++"> C++</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="skill-logo" alt="Java"> Java</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="skill-card">
+                        <h3 class="skill-category"><i class="fas fa-brain"></i> AI/ML</h3>
+                        <ul>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="skill-logo" alt="TensorFlow"> TensorFlow</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" class="skill-logo" alt="PyTorch"> PyTorch</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" class="skill-logo" alt="OpenCV"> OpenCV</li>
+                            <li>Natural Language Processing</li>
+                         </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="skill-card">
+                        <h3 class="skill-category"><i class="fas fa-tools"></i> Tools</h3>
+                        <ul>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-logo" alt="Git"> Git & GitHub</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="skill-logo" alt="VS Code"> VS Code</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" class="skill-logo" alt="Jupyter"> Jupyter Notebook</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="skill-logo" alt="MongoDB"> MongoDB Compass</li>
+                         </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="skill-card">
+                        <h3 class="skill-category"><i class="fas fa-cloud"></i> Cloud & Platforms</h3>
+                        <ul>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="skill-logo" alt="Azure"> Microsoft Azure</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" class="skill-logo" alt="AWS"> AWS</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="skill-logo" alt="Google Cloud"> Google Cloud</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" class="skill-logo" alt="Firebase"> Firebase</li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-light">
+        <div class="container py-5">
+            <h2 class="section-title">Experience</h2>
+            <p class="mb-5">A collection of my work experience and the roles I have taken in various organizations</p>
+            
+            <div class="experience-card fade-in">
+                <h3 class="experience-title">Web Development Intern</h3>
+                <h4>Prodigy InfoTech</h4>
+                <span class="experience-date">15th September 2025 - 15th October 2025</span>
+                <p>Selected for a web development internship at Prodigy InfoTech, where I will work on real-world projects, build practical skills, and contribute meaningfully to the team. This opportunity will allow me to enhance my web development capabilities and gain valuable industry experience.</p>
+                <div class="mt-3">
+                    <span class="badge bg-primary">Web Development</span>
+                    <span class="badge bg-primary">Real-world Projects</span>
+                    <span class="badge bg-primary">Professional Growth</span>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in">
+                <h3 class="experience-title">Artificial Intelligence Intern</h3>
+                <h4>CodSoft</h4>
+                <span class="experience-date">5th September 2025 - 5th October 2025</span>
+                <p>Selected for a virtual internship in Artificial Intelligence at CodSoft. This 4-week program focuses on developing new skills and gaining hands-on knowledge in AI technologies. I will be working on projects that strengthen my understanding of AI concepts and their practical applications.</p>
+                <div class="mt-3">
+                    <span class="badge bg-primary">Artificial Intelligence</span>
+                    <span class="badge bg-primary">Machine Learning</span>
+                    <span class="badge bg-primary">Hands-on Projects</span>
+                </div>
+            </div>
+            
+            <div class="experience-card fade-in">
+                <h3 class="experience-title">Artificial Intelligence Intern</h3>
+                <h4>CodeAlpha</h4>
+                <span class="experience-date">10th September 2025 - 10th October 2025</span>
+                <p>Selected for an Artificial Intelligence internship at CodeAlpha. This program emphasizes learning new skills with a deeper understanding of concepts through hands-on application of knowledge. I will be working on AI projects that focus on practical implementation and skill development.</p>
+                <div class="mt-3">
+                    <span class="badge bg-primary">AI Concepts</span>
+                    <span class="badge bg-primary">Hands-on Learning</span>
+                    <span class="badge bg-primary">Skill Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="experience-card fade-in">
+                <h3 class="experience-title">B.Tech in Computer Science with AI Specialization</h3>
+                <h4>Greater Noida Institute of Technology</h4>
+                <span class="experience-date">2023 - 2027</span>
+                <p>Currently pursuing my Bachelor's degree in Computer Science with a specialization in Artificial Intelligence. Gaining comprehensive knowledge in machine learning, deep learning, natural language processing, and other AI technologies.</p>
+                <div class="mt-3">
+                    <span class="badge bg-primary">Artificial Intelligence</span>
+                    <span class="badge bg-primary">Machine Learning</span>
+                    <span class="badge bg-primary">Deep Learning</span>
+                    <span class="badge bg-primary">Natural Language Processing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-5 bg-light">
+        <div class="container py-5">
+            <h2 class="section-title">Certifications</h2>
+            <p class="mb-5">Professional certifications I've earned to validate my skills and knowledge</p>
+            
+            <div class="certification-grid">
+                <div class="certification-card fade-in">
+                    <img src="deep learning.jpg" alt="Deep Learning with PyTorch Certification" class="certification-img">
+                    <div class="certification-content">
+                        <h3 class="certification-title">Become a Deep Learning Engineer: Introduction to PyTorch</h3>
+                        <p class="certification-org">Simplilearn</p>
+                        <p class="certification-date">Completed: 3rd September 2025</p>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in">
+                    <img src="c programming.jpg" alt="C Programming Certification" class="certification-img">
+                    <div class="certification-content">
+                        <h3 class="certification-title">Student Development Program on C Programming</h3>
+                        <p class="certification-org">E & ICT Academy, IIT Kanpur</p>
+                        <p class="certification-date">Completed: 14th May 2025</p>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in">
+                    <img src="microsoft asure ai.jpg" alt="Microsoft Azure AI Certification" class="certification-img">
+                    <div class="certification-content">
+                        <h3 class="certification-title">Microsoft Azure AI Essentials</h3>
+                        <p class="certification-org">Microsoft and LinkedIn Learning</p>
+                        <p class="certification-date">Completed: 21st July 2025</p>
+                    </div>
+                </div>
+                
+                <div class="certification-card fade-in">
+                    <img src="AWS builder.jpg" alt="AWS Builders Online Series" class="certification-img">
+                    <div class="certification-content">
+                        <h3 class="certification-title">AWS Builders Online Series</h3>
+                        <p class="certification-org">Amazon Web Services</p>
+                        <p class="certification-date">Completed: 31st July 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">Projects</h2>
+            <p class="mb-5">Some of my recent work and personal projects</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4 fade-in">
+                    <div class="card h-100 project-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Portfolio Website</h3>
+                            <p class="card-text">A responsive personal portfolio website built with HTML, CSS, JavaScript and Bootstrap to showcase my skills and projects.</p>
+                            <p class="text-muted">HTML, CSS, JavaScript, Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 fade-in">
+                    <div class="card h-100 project-card">
+                        <div class="card-body">
+                            <h3 class="card-title">AI Chatbot</h3>
+                            <p class="card-text">An intelligent chatbot built with Python and TensorFlow that can answer questions and engage in conversation on various topics.</p>
+                            <p class="text-muted">Python, TensorFlow, NLP</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 fade-in">
+                    <div class="card h-100 project-card">
+                        <div class="card-body">
+                            <h3 class="card-title">Language Translation Tool</h3>
+                            <p class="card-text">The Language Translation Tool is a web-based application that allows users to enter text, select a source and target language, and get instant translations. It provides additional features like copy-to-clipboard and text-to-speech for usability.</p>
+                            <p class="text-muted">Python, Flask, Translation API, HTML, Flask Development Server</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 fade-in">
+                    <div class="card h-100 project-card">
+                        <div class="card-body">
+                            <h3 class="card-title">E-Commerce Platform</h3>
+                            <p class="card-text">A full-stack e-commerce application with user authentication, product catalog, and payment integration.</p>
+                            <p class="text-muted">React, Node.js, MongoDB, Stripe API</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 fade-in">
+                <a href="https://github.com/sharmasiddhant2005" target="_blank" class="btn btn-outline-primary">
+                    <i class="fab fa-github me-2"></i>View More Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container py-5">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="mb-5">Feel free to reach out for collaborations or just a friendly hello</p>
+            
+            <div class="row">
+                <div class="col-md-6 fade-in">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Contact Information</h3>
+                            <p><i class="fas fa-envelope me-2"></i> sharmasiddhant2005@gmail.com</p>
+                            <p><i class="fas fa-phone me-2"></i> +91 8826154600</p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i> Faridabad, Haryana, India</p>
+                            
+                            <div class="social-links mt-4">
+                                <a href="https://www.linkedin.com/in/siddhant-sharma-2b41b327b" target="_blank" class="text-primary">
+                                    <i class="fab fa-linkedin fa-2x me-3"></i>
+                                </a>
+                                <a href="https://github.com/sharmasiddhant2005" target="_blank" class="text-dark">
+                                    <i class="fab fa-github fa-2x me-3"></i>
+                                </a>
+                                <a href="https://www.instagram.com/sid_sharma__12" target="_blank" class="text-danger">
+                                    <i class="fab fa-instagram fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 fade-in">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4">Send Message</h3>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <span id="submitText">Send Message</span>
+                                    <span id="loadingSpinner" class="loading" style="display: none;"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Siddhant Sharma</h3>
+                    <p>B.Tech Computer Science with specialization in Artificial Intelligence</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/siddhant-sharma-2b41b327b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/sharmasiddhant2005" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/sid_sharma__12" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p>&copy; 2025 Siddhant Sharma. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const fadeInObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, fadeInOptions);
+            
+            fadeElements.forEach(element => {
+                fadeInObserver.observe(element);
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitText.style.display = 'none';
+                loadingSpinner.style.display = 'inline-block';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(function() {
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Show success message
+                    alert('Thank you for your message! I will get back to you soon.');
+                    
+                    // Reset button state
+                    submitText.style.display = 'inline-block';
+                    loadingSpinner.style.display = 'none';
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+            
+            // Navbar background change on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
